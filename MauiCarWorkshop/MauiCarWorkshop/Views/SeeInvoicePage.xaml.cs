@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MauiCarWorkshop.Views;
 
-public partial class InvoicePage : ContentPage
+public partial class SeeInvoicePage : ContentPage
 {
-    public InvoicePage()
+    public SeeInvoicePage()
     {
         InitializeComponent();
     }
