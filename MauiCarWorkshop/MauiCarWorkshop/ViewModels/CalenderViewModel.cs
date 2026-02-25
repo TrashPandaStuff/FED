@@ -1,6 +1,6 @@
 ﻿namespace MauiCarWorkshop.ViewModels;
 
-public class MainViewModel
+public class CalenderViewModel
 {
     
 }
