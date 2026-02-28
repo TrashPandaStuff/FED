@@ -1,6 +1,6 @@
 ﻿namespace MauiCarWorkshop.Models;
 
-public class Car
+public class Invoice
 {
     
 }
