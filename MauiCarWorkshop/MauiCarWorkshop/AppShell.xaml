@@ -6,10 +6,7 @@
     xmlns:local="clr-namespace:MauiCarWorkshop"
     xmlns:pages="clr-namespace:MauiCarWorkshop.Views"
     Shell.FlyoutBehavior="Disabled"
-    Title="MauiCarWorkshop"
-    Shell.TabBarBackgroundColor="Black"
-    Shell.TabBarUnselectedColor="Gray"
-    Shell.TabBarTitleColor="White">
+    Title="MauiCarWorkshop">
     
     <TabBar>
         <Tab Title="Order creation"

@@ -9,6 +9,49 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            
+            <Color x:Key="ColorBlack">#222831</Color>
+            <Color x:Key="ColorGrey">#393E46</Color>
+            <Color x:Key="ColorBlue">#00ADB5</Color>
+            <Color x:Key="ColorWhite">#EEEEEE</Color>
+            
+            <Style x:Key="HeaderLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource ColorWhite}" />
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+            </Style>
+            
+            <Style x:Key="SubHeaderLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource ColorWhite}" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource ColorWhite}" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource ColorBlue}" />
+                <Setter Property="TextColor" Value="{StaticResource ColorBlack}" />
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="Padding" Value="10,5" />
+            </Style>
+            
+            <Style TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="{StaticResource ColorGrey}" />
+                <Setter Property="TextColor" Value="{StaticResource ColorWhite}" />
+            </Style>
+            
+            <Style TargetType="Editor">
+                <Setter Property="BackgroundColor" Value="{StaticResource ColorGrey}" />
+                <Setter Property="TextColor" Value="{StaticResource ColorWhite}" />
+                <Setter Property="AutoSize" Value="TextChanges"/>
+            </Style>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>
