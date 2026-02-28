@@ -4,11 +4,31 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MauiCarWorkshop"
+    xmlns:pages="clr-namespace:MauiCarWorkshop.Views"
+    Shell.FlyoutBehavior="Disabled"
     Title="MauiCarWorkshop">
-
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    
+    <TabBar>
+        <Tab Title="Order creation"
+             
+             Route="Order creation">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+        <Tab Title="Calender"
+             
+             Route="Calender">
+            <ShellContent ContentTemplate="{DataTemplate pages:CalenderPage}" />
+        </Tab>
+        <Tab Title="Create invoice"
+             
+             Route="Create invoice">
+            <ShellContent ContentTemplate="{DataTemplate pages:CreateInvoicePage}" />
+        </Tab>
+        <Tab Title="See invoices"
+             
+             Route="See invoices">
+            <ShellContent ContentTemplate="{DataTemplate pages:SeeInvoicePage}" />
+        </Tab>
+    </TabBar>
 
 </Shell>
