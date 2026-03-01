@@ -6,17 +6,17 @@ public class Order
 {
     [PrimaryKey, AutoIncrement] public int OrderId { get; set; }
     
-    public required string CustomerName { get; set; }
+    public string CustomerName { get; set; }
     
-    public required string Address { get; set; }
+    public string Address { get; set; }
     
-    public required string CarBrand { get; set; }
+    public string CarBrand { get; set; }
     
-    public required string CarModel { get; set; }
+    public string CarModel { get; set; }
     
-    public required string LicensePlateNumber { get; set; }
+    public string LicensePlateNumber { get; set; }
     
-    public required DateTime DeliveryDate { get; set; }
+    public DateTime DeliveryDate { get; set; }
     
-    public required string TaskDescription { get; set; }
+    public string TaskDescription { get; set; }
 }
