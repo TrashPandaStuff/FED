@@ -4,7 +4,8 @@ namespace MauiCarWorkshop.Models;
 
 public class Order
 {
-    [PrimaryKey, AutoIncrement] public int OrderId { get; set; }
+    [PrimaryKey, AutoIncrement] 
+    public int OrderId { get; set; }
     
     public string CustomerName { get; set; }
     

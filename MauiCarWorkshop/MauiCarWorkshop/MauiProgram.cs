@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using CommunityToolkit.Maui;
-using MauiCarWorkshop.Services;
 using MauiCarWorkshop.ViewModels;
 using MauiCarWorkshop.Services;
 using MauiCarWorkshop.ViewModels;
@@ -21,7 +20,7 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
-        builder.Services.AddSingleton<DataBaseService>();
+        builder.Services.AddSingleton<DatabaseService>();
         builder.Services.AddTransient<CalenderViewModel>();
         builder.Services.AddTransient<CalenderPage>();
         builder.Services.AddTransient<CreateOrderViewModel>();

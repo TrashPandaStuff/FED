@@ -63,9 +63,12 @@ public class DatabaseService : IDatabaseService
 
     public async Task<List<Order>> GetOrdersByDateAsync(DateTime date)
     {
-        var targetDate = date.Date;
+        var start = date.Date;
+        var end = start.AddDays(1);
 
-        return await _connection.Table<Order>().Where(o => o.DeliveryDateTime >= targetDate && o.DeliveryDateTime < targetDate.AddDays(1)).ToListAsync();
+        return await _connection.Table<Order>()
+            .Where(o => o.DeliveryDateTime >= start && o.DeliveryDateTime < end)
+            .ToListAsync();
     }
 
 

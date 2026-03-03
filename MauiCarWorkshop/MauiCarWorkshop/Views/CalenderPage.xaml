@@ -2,47 +2,84 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MauiCarWorkshop.ViewModels"
+             xmlns:models="clr-namespace:MauiCarWorkshop.Models"
              x:Class="MauiCarWorkshop.Views.CalenderPage"
-             Title="View of tasks"
+             x:DataType="vm:CalenderViewModel"
+             Title="Task Calender"
              BackgroundColor="{StaticResource ColorBlack}">
-    <VerticalStackLayout Padding="20" Spacing="20">
-        <Label
-            Text="View of tasks"
-            Style="{StaticResource HeaderLabelStyle}"/>
-        
-        <Label
-            Text="Pick a date"
-            Style="{StaticResource SubHeaderLabelStyle}"/>
-        
-        <DatePicker
-            Date="{Binding SelectedDate}"
-            BackgroundColor="{StaticResource ColorGrey}"
-            TextColor="{StaticResource ColorWhite}"/>
-        
-        <CollectionView
-            ItemsSource="{Binding Orders}"
-            SelectionMode="None">
-            
-            <CollectionView.EmptyView>
-                <Label
-                    Text="No tasks for the chosen date"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    Style="{StaticResource SubHeaderLabelStyle}"/>
-            </CollectionView.EmptyView>
-            
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame
-                        BackgroundColor="{StaticResource ColorGrey}"
-                        CornerRadius="12"
-                        Padding="12"
-                        Margin="0.5">
-                        <VerticalStackLayout Spacing="4">
-                            <Label Text="{Binding CustomerName}"/>
-                            <Label Text="{Binding CarBrand}"/>
-                            <Label Text="{Binding LicensePlate}"/>
-                            <Label Text="{Binding Description}"/>
+       <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="25">
+
+            <Label
+                Text="Task Calender"
+                Style="{StaticResource HeaderLabelStyle}" />
+
+            <Label
+                Text="Pick a date"
+                Style="{StaticResource SubHeaderLabelStyle}" />
+
+            <DatePicker
+                Date="{Binding SelectedDate, Mode=TwoWay}" />
+
+            <CollectionView
+                ItemsSource="{Binding Orders}"
+                SelectionMode="None"
+                Margin="0,10,0,0">
+                   
+                   <CollectionView.ItemsLayout>
+                          <LinearItemsLayout Orientation="Vertical"
+                                             ItemSpacing="15"/>
+                          </CollectionView.ItemsLayout>
+
+                   <CollectionView.EmptyView>
+                    <Label
+                        Text="No tasks for the chosen date"
+                        HorizontalOptions="Center"
+                        Margin="0,20,0,0"
+                        Style="{StaticResource SubHeaderLabelStyle}" />
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Order">
+                        <Frame Style="{StaticResource CardFrameStyle}">
+
+                            <VerticalStackLayout Spacing="6">
+
+                                <Label Text="Customer"
+                                       Style="{StaticResource FieldTitleStyle}" />
+                                <Label Text="{Binding CustomerName}"
+                                       Style="{StaticResource FieldValueStyle}" />
+
+                                <Label Text="Address"
+                                       Style="{StaticResource FieldTitleStyle}" />
+                                <Label Text="{Binding Address}"
+                                       Style="{StaticResource FieldValueStyle}" />
+
+                                <Label Text="Car brand"
+                                       Style="{StaticResource FieldTitleStyle}" />
+                                <Label Text="{Binding CarBrand}"
+                                       Style="{StaticResource FieldValueStyle}" />
+
+                                <Label Text="Car model"
+                                       Style="{StaticResource FieldTitleStyle}" />
+                                <Label Text="{Binding CarModel}"
+                                       Style="{StaticResource FieldValueStyle}" />
+
+                                <Label Text="License Plate"
+                                       Style="{StaticResource FieldTitleStyle}" />
+                                <Label Text="{Binding LicensePlateNumber}"
+                                       Style="{StaticResource FieldValueStyle}" />
+
+                                <Label Text="Delivery Date Time"
+                                       Style="{StaticResource FieldTitleStyle}" />
+                                <Label Text="{Binding DeliveryDateTime}"
+                                       Style="{StaticResource FieldValueStyle}" />
+
+                                <Label Text="Task Description"
+                                       Style="{StaticResource FieldTitleStyle}" />
+                                <Label Text="{Binding TaskDescription}"
+                                       Style="{StaticResource FieldValueStyle}" />
                         </VerticalStackLayout>
                         </Frame>
                 </DataTemplate>
@@ -50,6 +87,5 @@
         </CollectionView>
         
     </VerticalStackLayout>
-    
-
+       </ScrollView>
 </ContentPage>

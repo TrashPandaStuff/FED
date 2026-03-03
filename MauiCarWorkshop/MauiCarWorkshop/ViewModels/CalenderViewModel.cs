@@ -8,13 +8,15 @@ namespace MauiCarWorkshop.ViewModels;
 
 public partial class CalenderViewModel : ObservableObject
 {
-    private readonly DataBaseService _dataBaseService;
+    private readonly DatabaseService _dataBaseService;
 
-    public CalenderViewModel(DataBaseService dataBaseService)
+    public CalenderViewModel(DatabaseService databaseService)
     {
-        _dataBaseService = dataBaseService;
+        _dataBaseService = databaseService;
         Orders = new ObservableCollection<Order>();
         SelectedDate = DateTime.Today;
+        
+        _ = LoadOrdersAsync();
         
     }
 
@@ -28,9 +30,11 @@ public partial class CalenderViewModel : ObservableObject
     }
 
     [RelayCommand]
-    public async Task LoadOrdersAsync()
+    private async Task LoadOrdersAsync()
     {
-        var orders = await _dataBaseService.GetOrdersByDateAsync(SelectedDate);
+        if (_dataBaseService == null) return;
+        
+        var orders = await _dataBaseService.GetOrdersByDateAsync(SelectedDate.Date);
         
         Orders.Clear();
 
