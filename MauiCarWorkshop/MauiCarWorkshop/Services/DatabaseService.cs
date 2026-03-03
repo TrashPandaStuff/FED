@@ -3,11 +3,11 @@ using SQLite;
 
 namespace MauiCarWorkshop.Services;
 
-public class DataBaseService : IDatabaseService
+public class DatabaseService : IDatabaseService
 {
     private readonly SQLiteAsyncConnection _connection;
 
-    public DataBaseService()
+    public DatabaseService()
     {
         var dataDir = FileSystem.AppDataDirectory;
         var databasePath = Path.Combine(dataDir, "MauiCarWorkshop.db");
@@ -65,7 +65,7 @@ public class DataBaseService : IDatabaseService
     {
         var targetDate = date.Date;
 
-        return await _connection.Table<Order>().Where(o => o.DeliveryDate >= targetDate && o.DeliveryDate < targetDate.AddDays(1)).ToListAsync();
+        return await _connection.Table<Order>().Where(o => o.DeliveryDateTime >= targetDate && o.DeliveryDateTime < targetDate.AddDays(1)).ToListAsync();
     }
 
 

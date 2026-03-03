@@ -2,6 +2,8 @@
 using CommunityToolkit.Maui;
 using MauiCarWorkshop.Services;
 using MauiCarWorkshop.ViewModels;
+using MauiCarWorkshop.Services;
+using MauiCarWorkshop.ViewModels;
 using MauiCarWorkshop.Views;
 
 namespace MauiCarWorkshop;
@@ -22,6 +24,8 @@ public static class MauiProgram
         builder.Services.AddSingleton<DataBaseService>();
         builder.Services.AddTransient<CalenderViewModel>();
         builder.Services.AddTransient<CalenderPage>();
+        builder.Services.AddTransient<CreateOrderViewModel>();
+        builder.Services.AddTransient<CreateOrderPage>();
 
 #if DEBUG
         builder.Logging.AddDebug();

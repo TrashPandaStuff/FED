@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MauiCarWorkshop.ViewModels"
+             x:Class="MauiCarWorkshop.CreateOrderPage"
+             x:DataType="vm:CreateOrderViewModel">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25"
+            BackgroundColor="{StaticResource ColorBlack}">
+
+            <Label
+                Text="Create an order"
+                Style="{StaticResource HeaderLabelStyle}" />
+
+            <Entry
+                Placeholder="Customer Name"
+                Text="{Binding CustomerName}" />
+
+            <Entry
+                Placeholder="Customer Address"
+                Text="{Binding Address}" />
+
+            <Entry
+                Placeholder="Car Brand"
+                Text="{Binding CarBrand}" />
+
+            <Entry
+                Placeholder="Car Model"
+                Text="{Binding CarModel}" />
+
+            <Entry
+                Placeholder="Registration Number"
+                Text="{Binding LicensePlateNumber}" />
+
+            <DatePicker
+                Date="{Binding DeliveryDate}" />
+            
+            <TimePicker 
+                Time="{Binding DeliveryTime}" />
+            
+            <Editor
+                Placeholder="Description"
+                Text="{Binding TaskDescription}" />
+
+            <Button
+                Text="Save Order"
+                Command="{Binding SaveOrderCommand}"
+                HorizontalOptions="Fill" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

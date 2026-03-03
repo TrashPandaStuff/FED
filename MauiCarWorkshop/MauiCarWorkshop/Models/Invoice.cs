@@ -18,5 +18,5 @@ public class Invoice
 
     public decimal HourlyRate { get; set; }
 
-    public decimal TotalPrice { get; set; }
+    public decimal Total => (HoursWorked * HourlyRate) + MaterialCost;
 }
