@@ -2,8 +2,54 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiCarWorkshop.Views.CalenderPage">
-    <ContentPage.Content>
+             x:Class="MauiCarWorkshop.Views.CalenderPage"
+             Title="View of tasks"
+             BackgroundColor="{StaticResource ColorBlack}">
+    <VerticalStackLayout Padding="20" Spacing="20">
+        <Label
+            Text="View of tasks"
+            Style="{StaticResource HeaderLabelStyle}"/>
         
-    </ContentPage.Content>
+        <Label
+            Text="Pick a date"
+            Style="{StaticResource SubHeaderLabelStyle}"/>
+        
+        <DatePicker
+            Date="{Binding SelectedDate}"
+            BackgroundColor="{StaticResource ColorGrey}"
+            TextColor="{StaticResource ColorWhite}"/>
+        
+        <CollectionView
+            ItemsSource="{Binding Orders}"
+            SelectionMode="None">
+            
+            <CollectionView.EmptyView>
+                <Label
+                    Text="No tasks for the chosen date"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Style="{StaticResource SubHeaderLabelStyle}"/>
+            </CollectionView.EmptyView>
+            
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                        BackgroundColor="{StaticResource ColorGrey}"
+                        CornerRadius="12"
+                        Padding="12"
+                        Margin="0.5">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="{Binding CustomerName}"/>
+                            <Label Text="{Binding CarBrand}"/>
+                            <Label Text="{Binding LicensePlate}"/>
+                            <Label Text="{Binding Description}"/>
+                        </VerticalStackLayout>
+                        </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+    </VerticalStackLayout>
+    
+
 </ContentPage>
