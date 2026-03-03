@@ -16,7 +16,7 @@ public class Order
     
     public string LicensePlateNumber { get; set; }
     
-    public DateTime DeliveryDate { get; set; }
+    public DateTime DeliveryDateTime { get; set; }
     
     public string TaskDescription { get; set; }
 }

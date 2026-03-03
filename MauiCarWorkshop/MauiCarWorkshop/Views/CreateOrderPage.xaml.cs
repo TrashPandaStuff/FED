@@ -1,23 +1,12 @@
-﻿namespace MauiCarWorkshop;
+﻿using MauiCarWorkshop.ViewModels;
+
+namespace MauiCarWorkshop;
 
 public partial class CreateOrderPage : ContentPage
 {
-    int count = 0;
-
-    public CreateOrderPage()
+    public CreateOrderPage(CreateOrderViewModel vm)
     {
         InitializeComponent();
-    }
-
-    private void OnCounterClicked(object? sender, EventArgs e)
-    {
-        count++;
-
-        if (count == 1)
-            CounterBtn.Text = $"Clicked {count} time";
-        else
-            CounterBtn.Text = $"Clicked {count} times";
-
-        SemanticScreenReader.Announce(CounterBtn.Text);
+        BindingContext = vm;
     }
 }

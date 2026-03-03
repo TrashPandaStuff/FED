@@ -2,7 +2,9 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiCarWorkshop.CreateOrderPage">
+             xmlns:vm="clr-namespace:MauiCarWorkshop.ViewModels"
+             x:Class="MauiCarWorkshop.CreateOrderPage"
+             x:DataType="vm:CreateOrderViewModel">
 
     <ScrollView>
         <VerticalStackLayout
@@ -15,40 +17,38 @@
                 Style="{StaticResource HeaderLabelStyle}" />
 
             <Entry
-                x:Name="CustomerNameEntry"
-                Placeholder="Customer Name" />
+                Placeholder="Customer Name"
+                Text="{Binding CustomerName}" />
 
             <Entry
-                x:Name="CustomerAddressEntry"
-                Placeholder="Customer Address" />
+                Placeholder="Customer Address"
+                Text="{Binding Address}" />
 
             <Entry
-                x:Name="CarModelEntry"
-                Placeholder="Car Model" />
+                Placeholder="Car Brand"
+                Text="{Binding CarBrand}" />
 
             <Entry
-                x:Name="CarBrandEntry"
-                Placeholder="Car Brand" />
+                Placeholder="Car Model"
+                Text="{Binding CarModel}" />
 
             <Entry
-                x:Name="CarNumberPlateEntry"
-                Placeholder="Registration Number" />
+                Placeholder="Registration Number"
+                Text="{Binding LicensePlateNumber}" />
 
             <DatePicker
-                x:Name="DueDatePicker" />
+                Date="{Binding DeliveryDate}" />
             
             <TimePicker 
-                x:Name="DueTimePicker" />
+                Time="{Binding DeliveryTime}" />
             
             <Editor
-                x:Name="DescriptionEditor"
-                Placeholder="Description"/>
+                Placeholder="Description"
+                Text="{Binding TaskDescription}" />
 
             <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
+                Text="Save Order"
+                Command="{Binding SaveOrderCommand}"
                 HorizontalOptions="Fill" />
 
         </VerticalStackLayout>
