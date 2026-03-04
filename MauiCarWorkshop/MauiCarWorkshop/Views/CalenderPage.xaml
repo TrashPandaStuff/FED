@@ -6,7 +6,6 @@
              xmlns:models="clr-namespace:MauiCarWorkshop.Models"
              x:Class="MauiCarWorkshop.Views.CalenderPage"
              x:DataType="vm:CalenderViewModel"
-             Title="Task Calender"
              BackgroundColor="{StaticResource ColorBlack}">
        <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="25">

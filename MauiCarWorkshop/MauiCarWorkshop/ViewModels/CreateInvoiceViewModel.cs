@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using MauiCarWorkshop.Services;
 using MauiCarWorkshop.Models;
+using MauiCarWorkshop.Services;
 
 namespace MauiCarWorkshop.ViewModels;
 
@@ -9,28 +9,52 @@ public partial class CreateInvoiceViewModel : ObservableObject
 {
     private readonly DatabaseService database;
 
-    public CreateInvoiceViewModel(DatabaseService dataBaseService)
+    public CreateInvoiceViewModel(DatabaseService databaseService)
     {
-        database = dataBaseService;
+        database = databaseService;
     }
 
     [ObservableProperty] private string mechanicName = string.Empty;
     [ObservableProperty] private string materialsUsed = string.Empty;
-    [ObservableProperty] private decimal materialCost = 0;
-    [ObservableProperty] private decimal hoursWorked = 0;
-    [ObservableProperty] private decimal hourlyRate = 0;
-    [RelayCommand]
+    [ObservableProperty] private string materialCost = string.Empty;
+    [ObservableProperty] private string hoursWorked = string.Empty;
+    [ObservableProperty] private string hourlyRate = string.Empty;
+    [ObservableProperty] private string errorMessage = string.Empty;
 
+    [RelayCommand]
     private async Task SaveInvoiceAsync()
     {
+        ErrorMessage = string.Empty;
+
+        if (string.IsNullOrWhiteSpace(MechanicName))
+        {
+            ErrorMessage = "Mechanic name is required.";
+            return;
+        }
+
+        if (!decimal.TryParse(MaterialCost, out var materialCost) ||
+            !decimal.TryParse(HoursWorked, out var hoursWorked) ||
+            !decimal.TryParse(HourlyRate, out var hourlyRate))
+        {
+            ErrorMessage = "Please enter valid numeric values.";
+            return;
+        }
+
+        if (materialCost < 0 || hoursWorked < 0 || hourlyRate < 0)
+        {
+            ErrorMessage = "Values cannot be negative.";
+            return;
+        }
+
         var invoice = new Invoice
         {
-           MechanicName = string.Empty,
-           MaterialsUsed = string.Empty,
-           MaterialCost = 0,
-           HoursWorked = 0,
-           HourlyRate = 0
+            MechanicName = MechanicName,
+            MaterialsUsed = MaterialsUsed,
+            MaterialCost = materialCost,
+            HoursWorked = hoursWorked,
+            HourlyRate = hourlyRate
         };
+
         await database.AddInvoiceAsync(invoice);
 
         ClearForm();
@@ -40,8 +64,8 @@ public partial class CreateInvoiceViewModel : ObservableObject
     {
         MechanicName = string.Empty;
         MaterialsUsed = string.Empty;
-        MaterialCost = 0;
-        HoursWorked = 0;
-        HourlyRate = 0;
+        MaterialCost = string.Empty;
+        HoursWorked = string.Empty;
+        HourlyRate = string.Empty;
     }
 }

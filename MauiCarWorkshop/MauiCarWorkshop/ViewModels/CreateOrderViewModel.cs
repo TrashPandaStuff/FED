@@ -13,7 +13,7 @@ public partial class CreateOrderViewModel : ObservableObject
     {
         database = databaseService;
     }
-    
+
     [ObservableProperty] private string customerName = string.Empty;
     [ObservableProperty] private string address = string.Empty;
     [ObservableProperty] private string carBrand = string.Empty;
@@ -22,10 +22,33 @@ public partial class CreateOrderViewModel : ObservableObject
     [ObservableProperty] private DateTime deliveryDate = DateTime.Today;
     [ObservableProperty] private TimeSpan deliveryTime = TimeSpan.Zero;
     [ObservableProperty] private string taskDescription = string.Empty;
+
+    [ObservableProperty] private string errorMessage = string.Empty;
+
     [RelayCommand]
-    
     private async Task SaveOrderAsync()
     {
+        ErrorMessage = string.Empty;
+        
+        if (string.IsNullOrWhiteSpace(CustomerName) ||
+            string.IsNullOrWhiteSpace(Address) ||
+            string.IsNullOrWhiteSpace(CarBrand) ||
+            string.IsNullOrWhiteSpace(CarModel) ||
+            string.IsNullOrWhiteSpace(LicensePlateNumber) ||
+            string.IsNullOrWhiteSpace(TaskDescription))
+        {
+            ErrorMessage = "All fields must be filled in.";
+            return;
+        }
+     
+        var deliveryDateTime = DeliveryDate.Add(DeliveryTime);
+
+        if (deliveryDateTime < DateTime.Now)
+        {
+            ErrorMessage = "Delivery date and time cannot be in the past.";
+            return;
+        }
+
         var order = new Order
         {
             CustomerName = CustomerName,
@@ -33,12 +56,12 @@ public partial class CreateOrderViewModel : ObservableObject
             CarBrand = CarBrand,
             CarModel = CarModel,
             LicensePlateNumber = LicensePlateNumber,
-            DeliveryDateTime = DeliveryDate.Add(DeliveryTime),
+            DeliveryDateTime = deliveryDateTime,
             TaskDescription = TaskDescription
         };
 
         await database.AddOrderAsync(order);
-        
+
         ClearForm();
     }
 
@@ -52,5 +75,6 @@ public partial class CreateOrderViewModel : ObservableObject
         TaskDescription = string.Empty;
         DeliveryDate = DateTime.Today;
         DeliveryTime = TimeSpan.Zero;
+        ErrorMessage = string.Empty;
     }
 }

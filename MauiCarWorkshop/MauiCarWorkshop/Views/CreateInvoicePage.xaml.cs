@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MauiCarWorkshop.ViewModels;
+﻿using MauiCarWorkshop.ViewModels;
 
-namespace MauiCarWorkshop.Views;
+namespace MauiCarWorkshop;
 
 public partial class CreateInvoicePage : ContentPage
 {

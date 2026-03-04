@@ -22,7 +22,7 @@
         <Tab Title="Create invoice"
              
              Route="CreateInvoice">
-            <ShellContent ContentTemplate="{DataTemplate pages:CreateInvoicePage}" />
+            <ShellContent ContentTemplate="{DataTemplate local:CreateInvoicePage}" />
         </Tab>
         <Tab Title="See invoices"
              
