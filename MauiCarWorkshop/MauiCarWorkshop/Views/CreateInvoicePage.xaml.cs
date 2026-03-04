@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MauiCarWorkshop.ViewModels;
 
 namespace MauiCarWorkshop.Views;
 
 public partial class CreateInvoicePage : ContentPage
 {
-    public CreateInvoicePage()
+    public CreateInvoicePage(CreateInvoiceViewModel vm)
     {
         InitializeComponent();
+        BindingContext = vm;
     }
 }

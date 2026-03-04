@@ -21,7 +21,6 @@ public partial class CalenderViewModel : ObservableObject
     }
 
     [ObservableProperty] private DateTime selectedDate;
-    
     public ObservableCollection<Order> Orders { get; }
 
     partial void OnSelectedDateChanged(DateTime value)

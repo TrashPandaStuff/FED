@@ -2,8 +2,46 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiCarWorkshop.Views.CreateInvoicePage">
-    <ContentPage.Content>
-        
-    </ContentPage.Content>
+             xmlns:vm="clr-namespace:MauiCarWorkshop.ViewModels"
+             x:Class="MauiCarWorkshop.Views.CreateInvoicePage"
+             x:DataType="vm:CreateInvoiceViewModel">
+    
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25"
+            BackgroundColor="{StaticResource ColorBlack}">
+
+            <Label
+                Text="Create an invoice"
+                Style="{StaticResource HeaderLabelStyle}" />
+
+            <Entry
+                Placeholder="Mechanic name"
+                Text="{Binding MechanicName}" />
+
+            <Entry
+                Placeholder="Material used"
+                Text="{Binding MaterialsUsed}" />
+
+            <Entry
+                Placeholder="Material cost"
+                Text="{Binding MaterialCost}" />
+
+            <Entry
+                Placeholder="Hours worked"
+                Text="{Binding HoursWorked}" />
+
+            <Entry
+                Placeholder="Hourly Rate"
+                Text="{Binding HourlyRate}" />
+
+            
+            <Button
+                Text="Save invoice"
+                Command="{Binding SaveInvoiceCommand}"
+                HorizontalOptions="Fill" />
+
+        </VerticalStackLayout> 
+    </ScrollView>
 </ContentPage>
