@@ -7,10 +7,7 @@
              x:DataType="vm:CreateInvoiceViewModel">
 
     <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="20"
-            BackgroundColor="{StaticResource ColorBlack}">
+        <VerticalStackLayout Style="{StaticResource VSL}">
 
             <Label
                 Text="Create an invoice"

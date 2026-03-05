@@ -8,7 +8,7 @@
              x:DataType="vm:CalenderViewModel"
              BackgroundColor="{StaticResource ColorBlack}">
        <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="25">
+              <VerticalStackLayout Style="{StaticResource VSL}">
 
             <Label
                 Text="Task Calender"

@@ -77,6 +77,12 @@
                 <Setter Property="TextColor" Value="Red"></Setter>
             </Style>
             
+            <Style x:Key="VSL" TargetType="VerticalStackLayout">
+                <Setter Property="Padding" Value="20"/>
+                <Setter Property="Spacing" Value="25"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource ColorBlack}"/>
+            </Style>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>
