@@ -17,13 +17,13 @@
             <CollectionView ItemsSource="{Binding Invoices}"
                             SelectionMode="None"
                             Margin="0,10,0,0">
-                   <CollectionView.ItemsLayout>
-                          <LinearItemsLayout Orientation="Vertical"
-                                             ItemSpacing="15"
-                                 ></LinearItemsLayout>
-                   </CollectionView.ItemsLayout>
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                                       ItemSpacing="15">
+                    </LinearItemsLayout>
+                </CollectionView.ItemsLayout>
 
-                   <CollectionView.EmptyView>
+                <CollectionView.EmptyView>
                     <Label Text="No invoices available"
                            HorizontalOptions="Center"
                            Margin="0,20,0,0"

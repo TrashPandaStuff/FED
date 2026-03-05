@@ -42,5 +42,14 @@ public partial class CalenderViewModel : ObservableObject
             Orders.Add(order);
         }
     }
+    
+    [RelayCommand]
+    private async Task DeleteOrderAsync(Order order)
+    {
+        if (order == null) return;
+
+        await _dataBaseService.DeleteOrderAsync(order);
+        Orders.Remove(order);
+    }
 
 }
