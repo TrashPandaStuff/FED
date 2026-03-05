@@ -15,6 +15,7 @@ public partial class CreateInvoiceViewModel : ObservableObject
     }
 
     [ObservableProperty] private string mechanicName = string.Empty;
+    [ObservableProperty] private string orderId = string.Empty;
     [ObservableProperty] private string materialsUsed = string.Empty;
     [ObservableProperty] private string materialCost = string.Empty;
     [ObservableProperty] private string hoursWorked = string.Empty;
@@ -34,13 +35,14 @@ public partial class CreateInvoiceViewModel : ObservableObject
 
         if (!decimal.TryParse(MaterialCost, out var materialCost) ||
             !decimal.TryParse(HoursWorked, out var hoursWorked) ||
-            !decimal.TryParse(HourlyRate, out var hourlyRate))
+            !decimal.TryParse(HourlyRate, out var hourlyRate) ||
+            !int.TryParse(OrderId, out var orderId))
         {
             ErrorMessage = "Please enter valid numeric values.";
             return;
         }
 
-        if (materialCost < 0 || hoursWorked < 0 || hourlyRate < 0)
+        if (materialCost < 0 || hoursWorked < 0 || hourlyRate < 0 || orderId < 0)
         {
             ErrorMessage = "Values cannot be negative.";
             return;
@@ -48,8 +50,9 @@ public partial class CreateInvoiceViewModel : ObservableObject
 
         var invoice = new Invoice
         {
-            MechanicName = MechanicName,
-            MaterialsUsed = MaterialsUsed,
+            MechanicName = mechanicName,
+            OrderId = orderId,
+            MaterialsUsed = materialsUsed,
             MaterialCost = materialCost,
             HoursWorked = hoursWorked,
             HourlyRate = hourlyRate
@@ -63,6 +66,7 @@ public partial class CreateInvoiceViewModel : ObservableObject
     private void ClearForm()
     {
         MechanicName = string.Empty;
+        OrderId = string.Empty;
         MaterialsUsed = string.Empty;
         MaterialCost = string.Empty;
         HoursWorked = string.Empty;

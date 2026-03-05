@@ -12,7 +12,12 @@
             <Label
                 Text="Create an invoice"
                 Style="{StaticResource HeaderLabelStyle}" />
-
+            
+            <Entry
+                Placeholder="Order id"
+                Keyboard="Numeric"
+                Text="{Binding OrderId}" />
+            
             <Entry
                 Placeholder="Mechanic name"
                 Text="{Binding MechanicName}" />
