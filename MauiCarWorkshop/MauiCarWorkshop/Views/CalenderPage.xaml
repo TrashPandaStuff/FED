@@ -44,9 +44,13 @@
                         <Frame Style="{StaticResource CardFrameStyle}">
 
                             <VerticalStackLayout Spacing="6">
-
-                                <Label Text="Customer"
-                                       Style="{StaticResource FieldTitleStyle}" />
+                                   <Label Text="Order ID"
+                                          Style="{StaticResource FieldTitleStyle}"/>
+                                   <Label Text="{Binding OrderId}"
+                                          Style="{StaticResource FieldValueStyle}"/>
+                                   
+                                   <Label Text="Customer"
+                                          Style="{StaticResource FieldTitleStyle}" />
                                 <Label Text="{Binding CustomerName}"
                                        Style="{StaticResource FieldValueStyle}" />
 
