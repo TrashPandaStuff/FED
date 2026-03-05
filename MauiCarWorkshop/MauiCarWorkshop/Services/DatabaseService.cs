@@ -3,7 +3,7 @@ using SQLite;
 
 namespace MauiCarWorkshop.Services;
 
-public class DatabaseService : IDatabaseService
+public class DatabaseService
 {
     private readonly SQLiteAsyncConnection _connection;
 
