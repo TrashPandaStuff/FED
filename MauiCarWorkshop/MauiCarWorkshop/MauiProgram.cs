@@ -27,6 +27,8 @@ public static class MauiProgram
         builder.Services.AddTransient<CreateOrderPage>();
         builder.Services.AddTransient<CreateInvoicePage>();
         builder.Services.AddTransient<CreateInvoiceViewModel>();
+        builder.Services.AddTransient<SeeInvoicePage>();
+        builder.Services.AddTransient<SeeInvoiceViewModel>();
 
 #if DEBUG
         builder.Logging.AddDebug();

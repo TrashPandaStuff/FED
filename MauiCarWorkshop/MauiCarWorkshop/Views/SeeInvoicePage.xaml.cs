@@ -9,17 +9,9 @@ namespace MauiCarWorkshop.Views;
 
 public partial class SeeInvoicePage : ContentPage
 {
-    public SeeInvoicePage()
+    public SeeInvoicePage(SeeInvoiceViewModel vm)
     {
         InitializeComponent();
-    }
-    
-    // vv Chat vv
-    protected override async void OnAppearing()
-    {
-        base.OnAppearing();
-
-        if (BindingContext is SeeInvoiceViewModel vm)
-            await vm.LoadInvoicesCommand.ExecuteAsync(null);
+        BindingContext = vm;
     }
 }
